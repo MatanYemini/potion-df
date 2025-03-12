@@ -1,0 +1,12 @@
+numpy>=1.19.5
+opencv-python>=4.5.5
+torch>=1.10.0
+torchvision>=0.11.1
+Pillow>=8.3.2
+facenet-pytorch>=2.5.2
+requests>=2.26.0
+matplotlib>=3.5.0
+scikit-learn>=1.0.1
+tqdm>=4.62.3
+tensorboard>=2.7.0  # For visualization during training if needed
+h5py>=3.6.0  # For loading models in .h5 format (MesoNet)

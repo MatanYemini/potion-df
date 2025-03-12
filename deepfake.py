@@ -209,16 +209,26 @@ class DeepfakeDetector:
                     anomaly_score += 0.3
             
             # Update history with new face positions
-            self.facial_landmark_history.append([(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2 
-                                               for face in faces for bbox in [face['bbox']]])
+            face_positions = []
+            for face in faces:
+                bbox = face['bbox']
+                center_x = (bbox[0] + bbox[2]) / 2
+                center_y = (bbox[1] + bbox[3]) / 2
+                face_positions.append([center_x, center_y])
+            self.facial_landmark_history.append(face_positions)
             
             # Keep history within window size
             while len(self.facial_landmark_history) > self.temporal_window_size:
                 self.facial_landmark_history.pop(0)
         else:
             # Build up history
-            self.facial_landmark_history.append([(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2 
-                                               for face in faces for bbox in [face['bbox']]])
+            face_positions = []
+            for face in faces:
+                bbox = face['bbox']
+                center_x = (bbox[0] + bbox[2]) / 2
+                center_y = (bbox[1] + bbox[3]) / 2
+                face_positions.append([center_x, center_y])
+            self.facial_landmark_history.append(face_positions)
         
         return min(anomaly_score, 1.0)
     
