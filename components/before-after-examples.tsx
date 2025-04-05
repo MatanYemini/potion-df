@@ -1,17 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+import { cn } from "@/lib/utils";
 
 const examples = [
   {
     id: 1,
     title: "Face Swap Detection",
-    description: "This example shows how our tool detects face swapping techniques commonly used in deepfakes.",
+    description:
+      "This example shows how our tool detects face swapping techniques commonly used in deepfakes.",
     beforeImage: "/placeholder.svg?height=400&width=600",
     afterImage: "/placeholder.svg?height=400&width=600",
     highlights: [
@@ -22,7 +23,8 @@ const examples = [
   {
     id: 2,
     title: "AI-Generated Content",
-    description: "Learn how to identify completely AI-generated images that never existed in reality.",
+    description:
+      "Learn how to identify completely AI-generated images that never existed in reality.",
     beforeImage: "/placeholder.svg?height=400&width=600",
     afterImage: "/placeholder.svg?height=400&width=600",
     highlights: [
@@ -33,7 +35,8 @@ const examples = [
   {
     id: 3,
     title: "Object Manipulation",
-    description: "See how our tool detects when objects have been added, removed, or modified in an image.",
+    description:
+      "See how our tool detects when objects have been added, removed, or modified in an image.",
     beforeImage: "/placeholder.svg?height=400&width=600",
     afterImage: "/placeholder.svg?height=400&width=600",
     highlights: [
@@ -41,11 +44,11 @@ const examples = [
       { x: 65, y: 70, size: 20, label: "Perspective error" },
     ],
   },
-]
+];
 
 export default function BeforeAfterExamples() {
-  const [activeExample, setActiveExample] = useState(examples[0])
-  const [sliderValue, setSliderValue] = useState(50)
+  const [activeExample, setActiveExample] = useState(examples[0]);
+  const [sliderValue, setSliderValue] = useState(50);
 
   return (
     <div>
@@ -70,16 +73,23 @@ export default function BeforeAfterExamples() {
 
         <div className="relative h-[400px] w-full">
           {/* Before Image (Background) */}
-          <Image src={activeExample.beforeImage || "/placeholder.svg"} alt="Before" fill className="object-cover" />
+          <Image
+            src={activeExample.beforeImage || "/placeholder.svg"}
+            alt="Before"
+            fill
+            className="object-cover"
+          />
 
           {/* After Image (Foreground with clip) */}
-          <div className="absolute top-0 left-0 h-full overflow-hidden" style={{ width: `${sliderValue}%` }}>
+          <div
+            className="absolute top-0 left-0 h-full overflow-hidden"
+            style={{ width: `${sliderValue}%` }}
+          >
             <Image
               src={activeExample.afterImage || "/placeholder.svg"}
               alt="After"
               fill
               className="object-cover"
-              style={{ width: "100vw" }}
             />
 
             {/* Highlights on the after image */}
@@ -98,13 +108,15 @@ export default function BeforeAfterExamples() {
                 <div
                   className={cn(
                     "rounded-full border-2 border-primary flex items-center justify-center",
-                    "w-8 h-8 text-xs font-bold text-primary bg-background",
+                    "w-8 h-8 text-xs font-bold text-primary bg-background"
                   )}
                 >
                   {index + 1}
                 </div>
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 whitespace-nowrap">
-                  <div className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded">{highlight.label}</div>
+                  <div className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
+                    {highlight.label}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -139,6 +151,5 @@ export default function BeforeAfterExamples() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
