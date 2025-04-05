@@ -1,46 +1,46 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { AlertCircle, ChevronDown, Info, Shield } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useTheme } from "next-themes"
-import DetectionTool from "@/components/detection-tool"
-import ParallaxSection from "@/components/parallax-section"
-import CustomCursor from "@/components/custom-cursor"
-import FloatingElements from "@/components/floating-elements"
-import BeforeAfterExamples from "@/components/before-after-examples"
-import EducationalTooltip from "@/components/educational-tooltip"
-import HeroBeams from "@/components/hero-beams"
-import SiteHeader from "@/components/site-header"
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { AlertCircle, ChevronDown, Info, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
+import DetectionTool from "@/components/detection-tool";
+import ParallaxSection from "@/components/parallax-section";
+import CustomCursor from "@/components/custom-cursor";
+import FloatingElements from "@/components/floating-elements";
+import BeforeAfterExamples from "@/components/before-after-examples";
+import EducationalTooltip from "@/components/educational-tooltip";
+import HeroBeams from "@/components/hero-beams";
+import SiteHeader from "@/components/site-header";
 
 export default function Home() {
-  const { theme } = useTheme()
-  const [isMounted, setIsMounted] = useState(false)
-  const [showCursor, setShowCursor] = useState(true)
-  const ref = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+  const [showCursor, setShowCursor] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, -50])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
   // Check if on mobile device
   useEffect(() => {
-    setIsMounted(true)
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    setIsMounted(true);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
-      setShowCursor(false)
+      setShowCursor(false);
     }
-  }, [])
+  }, []);
 
   if (!isMounted) {
-    return null
+    return null;
   }
 
   return (
@@ -51,8 +51,14 @@ export default function Home() {
       <SiteHeader />
 
       {/* Hero Section */}
-      <section ref={ref} className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-        <motion.div style={{ opacity, scale, y }} className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <section
+        ref={ref}
+        className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
+      >
+        <motion.div
+          style={{ opacity, scale, y }}
+          className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -75,8 +81,8 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
-            Our advanced AI technology helps you detect manipulated images with precision. Protect yourself from
-            misinformation in the digital age.
+            Our advanced AI technology helps you detect manipulated images with
+            precision. Protect yourself from misinformation in the digital age.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,7 +93,12 @@ export default function Home() {
             <Button asChild size="lg" className="rounded-full">
               <Link href="#tool">Try It Now</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-full">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="rounded-full"
+            >
               <Link href="#education">Learn How It Works</Link>
             </Button>
           </motion.div>
@@ -112,10 +123,13 @@ export default function Home() {
       {/* Detection Tool Section */}
       <section id="tool" className="py-24 px-4 relative">
         <div className="max-w-6xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Advanced Deepfake Detection</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            Advanced Deepfake Detection
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Upload any image and our AI will analyze it for signs of manipulation. Get detailed insights into what makes
-            an image authentic or fake.
+            Upload any image and our AI will analyze it for signs of
+            manipulation. Get detailed insights into what makes an image
+            authentic or fake.
           </p>
         </div>
 
@@ -126,9 +140,12 @@ export default function Home() {
       <section id="examples" className="py-24 px-4 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">See It In Action</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              See It In Action
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our interactive examples to understand how deepfakes are created and detected.
+              Explore our interactive examples to understand how deepfakes are
+              created and detected.
             </p>
           </div>
 
@@ -140,9 +157,12 @@ export default function Home() {
       <section id="education" className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Understanding Deepfakes</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Understanding Deepfakes
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Learn about the technology behind deepfakes and how our detection tools work.
+              Learn about the technology behind deepfakes and how our detection
+              tools work.
             </p>
           </div>
 
@@ -153,8 +173,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-2">What Are Deepfakes?</h3>
               <p className="text-muted-foreground mb-4">
-                Deepfakes use artificial intelligence to create or manipulate visual and audio content with a high
-                potential to deceive.
+                Deepfakes use artificial intelligence to create or manipulate
+                visual and audio content with a high potential to deceive.
               </p>
               <EducationalTooltip content="Deepfakes are created using deep learning techniques, specifically generative adversarial networks (GANs) that can swap faces, alter expressions, and create entirely new synthetic media.">
                 <Button variant="ghost" className="text-primary">
@@ -169,8 +189,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-2">Detection Methods</h3>
               <p className="text-muted-foreground mb-4">
-                Our technology analyzes pixel inconsistencies, facial abnormalities, and metadata to identify
-                manipulated images.
+                Our technology analyzes pixel inconsistencies, facial
+                abnormalities, and metadata to identify manipulated images.
               </p>
               <EducationalTooltip content="We use a combination of frequency domain analysis, facial landmark detection, and deep learning models trained on thousands of real and fake images to identify manipulations.">
                 <Button variant="ghost" className="text-primary">
@@ -185,7 +205,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-2">Protecting Yourself</h3>
               <p className="text-muted-foreground mb-4">
-                Learn practical tips to identify potential deepfakes and protect yourself from misinformation.
+                Learn practical tips to identify potential deepfakes and protect
+                yourself from misinformation.
               </p>
               <EducationalTooltip content="Always verify images from multiple sources, check for inconsistencies in lighting, blurring around facial features, and unnatural skin textures. Use our tool to analyze suspicious images.">
                 <Button variant="ghost" className="text-primary">
@@ -202,14 +223,18 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Mission</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                Our Mission
+              </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                In an era where digital content can be easily manipulated, we're committed to providing tools that help
-                people distinguish fact from fiction.
+                In an era where digital content can be easily manipulated, we're
+                committed to providing tools that help people distinguish fact
+                from fiction.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Our team of AI researchers and digital forensics experts have developed cutting-edge technology to
-                detect even the most sophisticated deepfakes.
+                Our team of AI researchers and digital forensics experts have
+                developed cutting-edge technology to detect even the most
+                sophisticated deepfakes.
               </p>
               <Button asChild className="rounded-full">
                 <Link href="#tool">Try Our Tool</Link>
@@ -234,19 +259,31 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center mb-8">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <Shield className="h-6 w-6 text-primary" />
-              <span className="font-bold text-xl">DeepDetect</span>
+              <span className="font-bold text-xl">Alethia</span>
             </div>
             <nav className="flex flex-wrap justify-center gap-6">
-              <Link href="#tool" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#tool"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Detection Tool
               </Link>
-              <Link href="#examples" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#examples"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Examples
               </Link>
-              <Link href="#about" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#about"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 About
               </Link>
-              <Link href="#education" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#education"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Learn
               </Link>
             </nav>
@@ -267,6 +304,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
-
